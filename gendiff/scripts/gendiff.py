@@ -11,6 +11,10 @@ def gendiff():
     parser.add_argument('first_file', type=str)
     parser.add_argument('second_file', type=str)
 
+    # Optional arguments
+    parser.add_argument('-f', '--format',
+                        help='set format of output (default: "stylish")')
+
     args = parser.parse_args()
     return args.first_file, args.second_file
 
