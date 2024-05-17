@@ -2,8 +2,15 @@ import json
 
 
 def generate_diff(data1, data2):
-    file1 = {k: str(v).lower() if isinstance(v, bool) else v for k, v in json.load(open(data1)).items()}
-    file2 = {k: str(v).lower() if isinstance(v, bool) else v for k, v in json.load(open(data2)).items()}
+    with open(data1) as f1, open(data2) as f2:
+        file1 = {
+            k: str(v).lower() if isinstance(v, bool) else v
+            for k, v in json.load(f1).items()
+        }
+        file2 = {
+            k: str(v).lower() if isinstance(v, bool) else v
+            for k, v in json.load(f2).items()
+        }
 
     equal = file1 | file2
     lines = ['{']
