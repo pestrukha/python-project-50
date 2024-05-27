@@ -28,4 +28,3 @@ def generate_diff(data1, data2):
 
     lines.append('}')
     return '\n'.join(lines)
-
