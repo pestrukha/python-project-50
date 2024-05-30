@@ -1,30 +1,43 @@
-import json
+from gendiff.parser import parse_json, parse_yaml
 
 
-def generate_diff(data1, data2):
-    with open(data1) as f1, open(data2) as f2:
-        file1 = {
-            k: str(v).lower() if isinstance(v, bool) else v
-            for k, v in json.load(f1).items()
-        }
-        file2 = {
-            k: str(v).lower() if isinstance(v, bool) else v
-            for k, v in json.load(f2).items()
-        }
+def get_diff(data_1, data_2):
+    result = {}
+    all_keys = sorted(set(data_1.keys()).union(data_2.keys()))
+    for key in all_keys:
+        if key in data_1 and key in data_2:
+            if data_1[key] == data_2[key]:
+                result[f"  {key}"] = data_1[key]
+            else:
+                result[f"- {key}"] = data_1[key]
+                result[f"+ {key}"] = data_2[key]
+        elif key in data_1:
+            result[f"- {key}"] = data_1[key]
+        elif key in data_2:
+            result[f"+ {key}"] = data_2[key]
+    return result
 
-    equal = file1 | file2
-    lines = ['{']
-    for key in sorted(equal.keys()):
-        if file1.get(key) == file2.get(key):
-            lines.append(f'    {key}: {file1[key]}')
-        elif key in file1 and key in file2:
-            lines.append(f'  - {key}: {file1[key]}')
-            lines.append(f'  + {key}: {file2[key]}')
 
-        elif key in file1 and key not in file2:
-            lines.append(f'  - {key}: {file1[key]}')
-        elif key in file2 and key not in file1:
-            lines.append(f'  + {key}: {file2[key]}')
+def stringify(value, replacer=' ', space_count=2):
+    def inner(current_value, depth=0):
+        if not isinstance(current_value, dict):
+            return str(current_value).lower()
+        deep_indent = replacer * (depth + space_count)
+        current_indent = replacer * depth
+        lines = []
+        for key, val in current_value.items():
+            lines.append(f"{deep_indent}{key}: {inner(val, depth + space_count)}")
+        lines_joined = '\n'.join(lines)
+        return f"{{\n{lines_joined}\n{current_indent}}}"
 
-    lines.append('}')
-    return '\n'.join(lines)
+    return inner(value)
+
+
+def generate_diff(file1, file2):
+    if not parse_yaml(file1, file2):
+        f1, f2 = parse_json(file1, file2)
+    else:
+        f1, f2 = parse_yaml(file1, file2)
+    result = get_diff(f1, f2)
+    string = stringify(result)
+    return string
