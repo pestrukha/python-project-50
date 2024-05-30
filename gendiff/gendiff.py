@@ -26,7 +26,8 @@ def stringify(value, replacer=' ', space_count=2):
         current_indent = replacer * depth
         lines = []
         for key, val in current_value.items():
-            lines.append(f"{deep_indent}{key}: {inner(val, depth + space_count)}")
+            line = f"{deep_indent}{key}: {inner(val, depth + space_count)}"
+            lines.append(line)
         lines_joined = '\n'.join(lines)
         return f"{{\n{lines_joined}\n{current_indent}}}"
     return inner(value)
