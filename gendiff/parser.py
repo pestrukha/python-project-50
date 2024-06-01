@@ -2,7 +2,6 @@ import os
 import json
 import yaml
 from yaml.loader import SafeLoader
-import argparse
 
 
 def parse_json(file1, file2):
@@ -33,20 +32,3 @@ def parse_yaml(file1, file2):
     if data1 is None or data2 is None:
         return False
     return data1, data2
-
-
-def parse_args():
-    parser = argparse.ArgumentParser(
-        prog='gendiff',
-        description='Compares two configuration files and shows a difference.')
-
-    # Positional arguments
-    parser.add_argument('first_file', type=str)
-    parser.add_argument('second_file', type=str)
-
-    # Optional arguments
-    parser.add_argument('-f', '--format',
-                        help='set format of output (default: "stylish")')
-
-    args = parser.parse_args()
-    return args.first_file, args.second_file
