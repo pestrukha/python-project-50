@@ -41,7 +41,7 @@ def format_item(key, status, value, depth):
     return ''
 
 
-def handle_item(item, depth):
+def change_item(item, depth):
     key = item['key']
     status = item['status']
     if status == 'nested':
@@ -61,7 +61,7 @@ def handle_item(item, depth):
 
 
 def convert_to_stylish(data, depth=1):
-    result = [handle_item(item, depth) for item in data]
+    result = [change_item(item, depth) for item in data]
     result_str = "\n".join(result)
     indent = " " * ((depth - 1) * 4)
 

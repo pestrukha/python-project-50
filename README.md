@@ -9,3 +9,5 @@
 [![asciicast](https://asciinema.org/a/659771.svg)](https://asciinema.org/a/659771)
 #### YAML
 [![asciicast](https://asciinema.org/a/661798.svg)](https://asciinema.org/a/661798)
+#### Nested files
+[![asciicast](https://asciinema.org/a/663237.svg)](https://asciinema.org/a/663237)
