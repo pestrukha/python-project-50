@@ -62,8 +62,8 @@ def change_item(item, depth):
 
 def convert_to_stylish(data, depth=1):
     result = [change_item(item, depth) for item in data]
-    result_str = "\n".join(result)
-    indent = " " * ((depth - 1) * 4)
+    result_str = '\n'.join(result)
+    indent = ' ' * ((depth - 1) * 4)
 
     if depth > 1:
         return f'{{\n{result_str}\n{indent}}}'
