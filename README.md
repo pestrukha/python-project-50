@@ -5,11 +5,13 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/9fe27a511695c1c8de16/maintainability)](https://codeclimate.com/github/pestrukha/python-project-50/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9fe27a511695c1c8de16/test_coverage)](https://codeclimate.com/github/pestrukha/python-project-50/test_coverage)
 ### Demo
-#### JSON
+#### JSON files
 [![asciicast](https://asciinema.org/a/659771.svg)](https://asciinema.org/a/659771)
-#### YAML
+#### YAML files
 [![asciicast](https://asciinema.org/a/661798.svg)](https://asciinema.org/a/661798)
 #### Nested files
 [![asciicast](https://asciinema.org/a/663237.svg)](https://asciinema.org/a/663237)
-#### Plain format
+#### Plain output
 [![asciicast](https://asciinema.org/a/xkAUx8YoDL6lhILILw1P4jaFS.svg)](https://asciinema.org/a/xkAUx8YoDL6lhILILw1P4jaFS)
+#### JSON output
+[![asciicast](https://asciinema.org/a/PBbUXYbfoSgfgENIcT66WUxyy.svg)](https://asciinema.org/a/PBbUXYbfoSgfgENIcT66WUxyy)

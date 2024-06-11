@@ -60,8 +60,8 @@ def change_item(item, depth):
     return ''
 
 
-def convert_to_stylish(data, depth=1):
-    result = [change_item(item, depth) for item in data]
+def convert_to_stylish(diff, depth=1):
+    result = [change_item(item, depth) for item in diff]
     result_str = '\n'.join(result)
     indent = ' ' * ((depth - 1) * 4)
 
