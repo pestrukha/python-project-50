@@ -11,3 +11,5 @@
 [![asciicast](https://asciinema.org/a/661798.svg)](https://asciinema.org/a/661798)
 #### Nested files
 [![asciicast](https://asciinema.org/a/663237.svg)](https://asciinema.org/a/663237)
+#### Plain format
+[![asciicast](https://asciinema.org/a/xkAUx8YoDL6lhILILw1P4jaFS.svg)](https://asciinema.org/a/xkAUx8YoDL6lhILILw1P4jaFS)
