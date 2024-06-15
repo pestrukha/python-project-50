@@ -2,8 +2,7 @@ import pytest
 from gendiff import generate_diff
 
 
-@pytest.mark.parametrize('file_1, file_2, expected, format',
-    [
+@pytest.mark.parametrize('file_1, file_2, expected, format', [
     (
         'tests/fixtures/nested_1.json',
         'tests/fixtures/nested_2.json',
