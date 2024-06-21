@@ -1,42 +1,44 @@
 import pytest
+from pathlib import Path
 from gendiff import generate_diff
 
+BASE_DIR = Path(__file__).parent
 
 @pytest.mark.parametrize('file_1, file_2, expected, format', [
     (
-        'tests/fixtures/nested_1.json',
-        'tests/fixtures/nested_2.json',
-        'tests/fixtures/stylish.txt',
+        BASE_DIR / 'fixtures/nested_1.json',
+        BASE_DIR / 'fixtures/nested_2.json',
+        BASE_DIR / 'fixtures/stylish.txt',
         'stylish'
     ),
     (
-        'tests/fixtures/nested_1.yml',
-        'tests/fixtures/nested_2.yml',
-        'tests/fixtures/stylish.txt',
+        BASE_DIR / 'fixtures/nested_1.yml',
+        BASE_DIR / 'fixtures/nested_2.yml',
+        BASE_DIR / 'fixtures/stylish.txt',
         'stylish'
     ),
     (
-        'tests/fixtures/nested_1.json',
-        'tests/fixtures/nested_2.json',
-        'tests/fixtures/plain.txt',
+        BASE_DIR / 'fixtures/nested_1.json',
+        BASE_DIR / 'fixtures/nested_2.json',
+        BASE_DIR / 'fixtures/plain.txt',
         'plain'
     ),
     (
-        'tests/fixtures/nested_1.yml',
-        'tests/fixtures/nested_2.yml',
-        'tests/fixtures/plain.txt',
+        BASE_DIR / 'fixtures/nested_1.yml',
+        BASE_DIR / 'fixtures/nested_2.yml',
+        BASE_DIR / 'fixtures/plain.txt',
         'plain'
     ),
     (
-        'tests/fixtures/nested_1.json',
-        'tests/fixtures/nested_2.json',
-        'tests/fixtures/json.txt',
+        BASE_DIR / 'fixtures/nested_1.json',
+        BASE_DIR / 'fixtures/nested_2.json',
+        BASE_DIR / 'fixtures/json.txt',
         'json'
     ),
     (
-        'tests/fixtures/nested_1.yml',
-        'tests/fixtures/nested_2.yml',
-        'tests/fixtures/json.txt',
+        BASE_DIR / 'fixtures/nested_1.yml',
+        BASE_DIR / 'fixtures/nested_2.yml',
+        BASE_DIR / 'fixtures/json.txt',
         'json'
     )
 ])

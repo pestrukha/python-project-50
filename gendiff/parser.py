@@ -3,6 +3,7 @@ import yaml
 
 
 def parse_data(file_path):
+    file_path = str(file_path)
     with open(file_path) as file:
         if file_path.endswith('.json'):
             return json.load(file)
