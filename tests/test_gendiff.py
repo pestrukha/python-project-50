@@ -4,6 +4,7 @@ from gendiff import generate_diff
 
 BASE_DIR = Path(__file__).parent
 
+
 @pytest.mark.parametrize('file_1, file_2, expected, format', [
     (
         BASE_DIR / 'fixtures/nested_1.json',
