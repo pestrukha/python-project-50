@@ -1,4 +1,5 @@
 import pytest
+import os
 from pathlib import Path
 from gendiff import generate_diff
 
@@ -7,43 +8,47 @@ BASE_DIR = Path(__file__).parent
 
 @pytest.mark.parametrize('file_1, file_2, expected, format', [
     (
-        BASE_DIR / 'fixtures/nested_1.json',
-        BASE_DIR / 'fixtures/nested_2.json',
-        BASE_DIR / 'fixtures/stylish.txt',
+        'nested_1.json',
+        'nested_2.json',
+        'stylish.txt',
         'stylish'
     ),
     (
-        BASE_DIR / 'fixtures/nested_1.yml',
-        BASE_DIR / 'fixtures/nested_2.yml',
-        BASE_DIR / 'fixtures/stylish.txt',
+        'nested_1.yml',
+        'nested_2.yml',
+        'stylish.txt',
         'stylish'
     ),
     (
-        BASE_DIR / 'fixtures/nested_1.json',
-        BASE_DIR / 'fixtures/nested_2.json',
-        BASE_DIR / 'fixtures/plain.txt',
+        'nested_1.json',
+        'nested_2.json',
+        'plain.txt',
         'plain'
     ),
     (
-        BASE_DIR / 'fixtures/nested_1.yml',
-        BASE_DIR / 'fixtures/nested_2.yml',
-        BASE_DIR / 'fixtures/plain.txt',
+        'nested_1.yml',
+        'nested_2.yml',
+        'plain.txt',
         'plain'
     ),
     (
-        BASE_DIR / 'fixtures/nested_1.json',
-        BASE_DIR / 'fixtures/nested_2.json',
-        BASE_DIR / 'fixtures/json.txt',
+        'nested_1.json',
+        'nested_2.json',
+        'json.txt',
         'json'
     ),
     (
-        BASE_DIR / 'fixtures/nested_1.yml',
-        BASE_DIR / 'fixtures/nested_2.yml',
-        BASE_DIR / 'fixtures/json.txt',
+        'nested_1.yml',
+        'nested_2.yml',
+        'json.txt',
         'json'
     )
 ])
 def test_gendiff(file_1, file_2, expected, format):
-    result = generate_diff(file_1, file_2, format)
-    with open(expected, 'r') as expected:
-        assert result == expected.read()
+    file_1_path = os.path.join(BASE_DIR, 'fixtures', file_1)
+    file_2_path = os.path.join(BASE_DIR, 'fixtures', file_2)
+    expected_path = os.path.join(BASE_DIR, 'fixtures', expected)
+
+    result = generate_diff(file_1_path, file_2_path, format)
+    with open(expected_path, 'r') as expected_file:
+        assert result == expected_file.read()
