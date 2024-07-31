@@ -3,6 +3,10 @@ from gendiff.formatters.plain import convert_to_plain
 from gendiff.formatters.json import convert_to_json
 
 
+class FormatError(Exception):
+    pass
+
+
 def format_diff(diff, format):
     if format == 'stylish':
         return convert_to_stylish(diff)
@@ -11,4 +15,4 @@ def format_diff(diff, format):
     elif format == 'json':
         return convert_to_json(diff)
     else:
-        raise ValueError(f'Unknown format: {format}')
+        raise FormatError(f'Unknown format: {format}')
